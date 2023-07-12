@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Feed Page</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
+        {% for file in files %}
+        <div class="col">
+            <div class="card h-100">
+                {% if file.get_file_type == 'image' %}
+                    <img src="{{ file.file.url }}" style="height: 300px; width: 100%" class="card-img-top" alt="Image">
+                {% elif file.get_file_type == 'audio' %}
+                    <audio controls class="card-img-top">
+                        <source src="{{ file.file.url }}" type="audio/mpeg">
+                    </audio>
+                {% elif file.get_file_type == 'video' %}
+                    <video controls class="card-img-top">
+                        <source src="{{ file.file.url }}" type="video/mp4">
+                    </video>
+                {% elif file.get_file_type == 'application' %}
+                <img width="100%" height="200" class="card-img-top" src="{% static 'pdf.png' %}" alt="pdf"/>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ file.title }}</h5>
+                    <a href="{% url 'file_detail' pk=file.id %}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No files available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
