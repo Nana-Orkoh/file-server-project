@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'accounts',
+    'files',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,5 @@ EMAIL_HOST_USER = 'nanaorkohdwamena@gmail.com'
 EMAIL_HOST_PASSWORD = 'kjkhbnxjtrengdiv'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+LOGOUT_REDIRECT_URL = 'login'
