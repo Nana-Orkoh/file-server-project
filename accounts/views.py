@@ -107,7 +107,7 @@ class ResendVerificationCodeView(View):
             mail_subject = "Verification Code"
             message = render_to_string("registration/verification_email.html", {
                 "user": user,
-                "verification_code": user.verification_code,
+                "verification_code": user.email_verification_code,
             })
             email = EmailMessage(
                 mail_subject, message, from_email="LizzyFileServer.com", to=[user.email]
