@@ -17,6 +17,7 @@ class FileListView(LoginRequiredMixin, ListView):
     model = Document
     template_name = 'files/list.html'
     context_object_name = 'files'
+    paginate_by = 6
  
     
     
